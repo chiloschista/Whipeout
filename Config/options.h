@@ -119,7 +119,7 @@
 // altitude is determined by the position of the throttle stick on the transmitter.
 // NOTE: even when set to AH_NONE, MatrixPilot will still try to stabilize pitch as long
 // as PITCH_STABILIZATION is set to 1 above, but will not aim for any specific altitude.
-#define ALTITUDEHOLD_STABILIZED             AH_FULL
+#define ALTITUDEHOLD_STABILIZED             AH_NONE
 #define ALTITUDEHOLD_WAYPOINT               AH_FULL
 
 // Speed Control
@@ -194,7 +194,7 @@
 // PPM_NUMBER_OF_CHANNELS is the number of channels sent on the PWM signal.  This is
 // often different from the NUM_INPUTS value below, and should usually be left at 8.
 //
-#define USE_PPM_INPUT                       0
+#define USE_PPM_INPUT                       1
 #define PPM_NUMBER_OF_CHANNELS              8
 #define PPM_SIGNAL_INVERTED                 0
 #define PPM_ALT_OUTPUT_PINS                 0
@@ -210,17 +210,17 @@
 // If using PWM inputs (parallel Rx connections), set to the number of cables connected, 1-8
 // If using PPM inputs (serial Rx connection), set to the number of Rx channels, up to PPM_NUMBER_OF_CHANNELS
 // If using LRS library (integrated SPI tranceiver), set to the number of Rx channels, up to 16
-#define NUM_INPUTS                          5
+#define NUM_INPUTS                          8
 
 // Channel numbers for each input.
 // Use as is, or edit to match your setup.
 //   - If you're set up to use Rudder Navigation (like MatrixNav), then you may want to swap
 //     the aileron and rudder channels so that rudder is CHANNEL_1, and aileron is 5.
-#define THROTTLE_INPUT_CHANNEL              CHANNEL_3
-#define AILERON_INPUT_CHANNEL               CHANNEL_1
-#define ELEVATOR_INPUT_CHANNEL              CHANNEL_2
-#define RUDDER_INPUT_CHANNEL                CHANNEL_5
-#define MODE_SWITCH_INPUT_CHANNEL           CHANNEL_4
+#define THROTTLE_INPUT_CHANNEL              CHANNEL_1
+#define AILERON_INPUT_CHANNEL               CHANNEL_2
+#define ELEVATOR_INPUT_CHANNEL              CHANNEL_3
+#define RUDDER_INPUT_CHANNEL                CHANNEL_UNUSED
+#define MODE_SWITCH_INPUT_CHANNEL           CHANNEL_5
 #define BRAKE_THR_SEL_INPUT_CHANNEL         CHANNEL_UNUSED
 #define BRAKE_INPUT_CHANNEL                 CHANNEL_UNUSED
 #define FLAPS_INPUT_CHANNEL                 CHANNEL_UNUSED
@@ -239,7 +239,7 @@
 // For UDB4/5 boards: Set to 3-8 (or up to 10 using pins RA4 and RA1.)
 // For AUAV3 boards:  Set to 3-8 (or up to 11 using pins RE1, RA6 and RA7.)
 //                               (this needs developing, so contact the list)
-#define NUM_OUTPUTS                         4
+#define NUM_OUTPUTS                         3
 
 // Channel numbers for each output
 // Use as is, or edit to match your setup.
@@ -252,11 +252,11 @@
 // connect THROTTLE_OUTPUT_CHANNEL to one of the built-in Outputs (1, 2, or 3) to make
 // sure your board gets power.
 //
-#define THROTTLE_OUTPUT_CHANNEL             CHANNEL_3
-#define AILERON_OUTPUT_CHANNEL              CHANNEL_1
+#define THROTTLE_OUTPUT_CHANNEL             CHANNEL_1
+#define AILERON_OUTPUT_CHANNEL              CHANNEL_2
 #define AILERON_SECONDARY_OUTPUT_CHANNEL    CHANNEL_UNUSED
-#define ELEVATOR_OUTPUT_CHANNEL             CHANNEL_2
-#define RUDDER_OUTPUT_CHANNEL               CHANNEL_4
+#define ELEVATOR_OUTPUT_CHANNEL             CHANNEL_3
+#define RUDDER_OUTPUT_CHANNEL               CHANNEL_UNUSED
 #define AILERON_LEFT_OUTPUT_CHANNEL         CHANNEL_UNUSED
 #define FLAP_LEFT_OUTPUT_CHANNEL            CHANNEL_UNUSED
 #define FLAP_RIGHT_OUTPUT_CHANNEL           CHANNEL_UNUSED
@@ -364,7 +364,7 @@
 // Note that SERIAL_MAVLINK defaults to using a baud rate of 57600 baud (other formats default to 19200)
 
 #ifndef SERIAL_OUTPUT_FORMAT
-#define SERIAL_OUTPUT_FORMAT                SERIAL_NONE
+#define SERIAL_OUTPUT_FORMAT                SERIAL_UDB_EXTRA
 #endif
 
 
@@ -769,9 +769,9 @@
 //#define ID_VEHICLE_REGISTRATION "TW2-PDH-UK"
 //#define ID_LEAD_PILOT "Pete Hollands"
 //#define ID_DIY_DRONES_URL "http://www.diydrones.com/profile/PeterHollands"
-#define ID_VEHICLE_MODEL_NAME               "Not Defined"
+#define ID_VEHICLE_MODEL_NAME               "Whipeout"
 #define ID_VEHICLE_REGISTRATION             "Not Defined"
-#define ID_LEAD_PILOT                       "Not Defined"
+#define ID_LEAD_PILOT                       "Riccardo Kuebler"
 #define ID_DIY_DRONES_URL                   "http://www.diydrones.com"
 
 
