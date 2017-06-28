@@ -1,4 +1,4 @@
-// Whipeout, 23.05.17
+// Whipeout, 23.05.17, 23.06.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -220,7 +220,7 @@
 #define AILERON_INPUT_CHANNEL               CHANNEL_2
 #define ELEVATOR_INPUT_CHANNEL              CHANNEL_3
 #define RUDDER_INPUT_CHANNEL                CHANNEL_UNUSED
-#define MODE_SWITCH_INPUT_CHANNEL           CHANNEL_5
+#define MODE_SWITCH_INPUT_CHANNEL           CHANNEL_8
 #define BRAKE_THR_SEL_INPUT_CHANNEL         CHANNEL_UNUSED
 #define BRAKE_INPUT_CHANNEL                 CHANNEL_UNUSED
 #define FLAPS_INPUT_CHANNEL                 CHANNEL_UNUSED
