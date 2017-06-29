@@ -1,3 +1,4 @@
+// Whipeout 28.06.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -301,12 +302,12 @@ const struct logoInstructionDef rtlInstructions[] = {
 	// Use cross-tracking for navigation
 	FLAG_ON(F_CROSS_TRACK)
 
+    // Fly home
+	HOME
+            
 	// Turn off engine for RTL
 	// Move this line down below the HOME to return home with power before circling unpowered.
 	FLAG_ON(F_LAND)
-
-	// Fly home
-	HOME
 
 	// Once we arrive home, aim the turtle in the
 	// direction that the plane is already moving.

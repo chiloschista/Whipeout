@@ -1,4 +1,4 @@
-// Whipeout, 23.05.17, 23.06.17
+// Whipeout, 28.06.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -92,7 +92,7 @@
 #define AILERON_NAVIGATION                  1
 #define RUDDER_NAVIGATION                   0
 
-// Cross track margin, in meters
+ // Cross track margin, in meters
 // This is used when the cross track option is attached to a waypoint
 // It defines the amount of cross track error at which the cross tracking
 // bearing adjustment saturates at 45 degree. You can also think of it
@@ -195,7 +195,7 @@
 // often different from the NUM_INPUTS value below, and should usually be left at 8.
 //
 #define USE_PPM_INPUT                       1
-#define PPM_NUMBER_OF_CHANNELS              8
+#define PPM_NUMBER_OF_CHANNELS              9
 #define PPM_SIGNAL_INVERTED                 0
 #define PPM_ALT_OUTPUT_PINS                 0
 
@@ -210,7 +210,7 @@
 // If using PWM inputs (parallel Rx connections), set to the number of cables connected, 1-8
 // If using PPM inputs (serial Rx connection), set to the number of Rx channels, up to PPM_NUMBER_OF_CHANNELS
 // If using LRS library (integrated SPI tranceiver), set to the number of Rx channels, up to 16
-#define NUM_INPUTS                          8
+#define NUM_INPUTS                          9
 
 // Channel numbers for each input.
 // Use as is, or edit to match your setup.
@@ -282,7 +282,7 @@
 // Servo Reversing Configuration
 // For any of these that are set to 1, that servo will be sent reversed controls.
 // Note that your servo reversing settings here should match what you set on your transmitter.
-#define AILERON_CHANNEL_REVERSED            0
+#define AILERON_CHANNEL_REVERSED            1
 #define ELEVATOR_CHANNEL_REVERSED           0
 #define RUDDER_CHANNEL_REVERSED             0
 #define AILERON_SECONDARY_CHANNEL_REVERSED  0
@@ -326,8 +326,8 @@
 //
 // FAILSAFE_INPUT_MIN and _MAX define the range within which we consider the radio on.
 // Normal signals should fall within about 2000 - 4000.
-#define FAILSAFE_INPUT_CHANNEL              THROTTLE_INPUT_CHANNEL
-#define FAILSAFE_INPUT_MIN                  1500
+#define FAILSAFE_INPUT_CHANNEL              MODE_SWITCH_INPUT_CHANNEL //THROTTLE_INPUT_CHANNEL
+#define FAILSAFE_INPUT_MIN                  1800
 #define FAILSAFE_INPUT_MAX                  4500
 
 // FAILSAFE_TYPE controls the UDB's behavior when in failsafe mode due to loss of transmitter
@@ -485,7 +485,7 @@
 
 // SERVOSAT limits servo throw by controlling pulse width saturation.
 // set it to 1.0 if you want full servo throw, otherwise set it to the portion that you want
-#define SERVOSAT                            1.0
+#define SERVOSAT                            0.5 // 1.0
 
 // FEED_FORWARD is a feed forward gain for deflecting control surfaces for turn rate.
 // The KP gains for each axis are multiplied by FEED_FORWARD to determine
@@ -517,7 +517,7 @@
 // PITCHGAIN is the pitch stabilization gain, typically around 0.125
 // PITCHKD feedback gain for pitch damping, around 0.0625
 // ELEVATOR_BOOST is the additional gain multiplier for the manually commanded elevator deflection
-#define PITCHGAIN                           0.30
+#define PITCHGAIN                           0.20 // 0.30
 #define PITCHKD                             0.00
 #define ELEVATOR_BOOST                      0.50
 
@@ -675,7 +675,7 @@
 // The range of altitude within which to linearly vary the throttle
 // and pitch to maintain altitude.  A bigger value makes altitude hold
 // smoother, and is suggested for very fast planes.
-#define HEIGHT_MARGIN                       10
+#define HEIGHT_MARGIN                       20 // 10
 
 // Use ALT_HOLD_THROTTLE_MAX when below HEIGHT_MARGIN of the target height.
 // Interpolate between ALT_HOLD_THROTTLE_MAX and ALT_HOLD_THROTTLE_MIN
@@ -725,7 +725,7 @@
 // The Waypoint definitions and options are located in the flightplan-waypoints.h file.
 // The Logo flight plan definitions and options are located in the flightplan-logo.h file.
 #ifndef FLIGHT_PLAN_TYPE
-#define FLIGHT_PLAN_TYPE                    FP_WAYPOINTS
+#define FLIGHT_PLAN_TYPE                    FP_LOGO
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
