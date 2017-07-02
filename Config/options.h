@@ -327,8 +327,8 @@
 // FAILSAFE_INPUT_MIN and _MAX define the range within which we consider the radio on.
 // Normal signals should fall within about 2000 - 4000.
 #define FAILSAFE_INPUT_CHANNEL              MODE_SWITCH_INPUT_CHANNEL //THROTTLE_INPUT_CHANNEL
-#define FAILSAFE_INPUT_MIN                  1800
-#define FAILSAFE_INPUT_MAX                  4500
+#define FAILSAFE_INPUT_MIN                  2000
+#define FAILSAFE_INPUT_MAX                  4000
 
 // FAILSAFE_TYPE controls the UDB's behavior when in failsafe mode due to loss of transmitter
 // signal.  (Set to FAILSAFE_RTL or FAILSAFE_MAIN_FLIGHTPLAN.)
@@ -485,7 +485,7 @@
 
 // SERVOSAT limits servo throw by controlling pulse width saturation.
 // set it to 1.0 if you want full servo throw, otherwise set it to the portion that you want
-#define SERVOSAT                            0.5 // 1.0
+#define SERVOSAT                            1.0
 
 // FEED_FORWARD is a feed forward gain for deflecting control surfaces for turn rate.
 // The KP gains for each axis are multiplied by FEED_FORWARD to determine
