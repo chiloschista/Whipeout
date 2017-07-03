@@ -1,4 +1,4 @@
-// Whipeout, 28.06.17
+// Whipeout, 28.06.17, 03.07.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -492,14 +492,14 @@
 // the feed forward gain for that axis.
 // For each axis, a deflection term is added equal to the feed forward gain for that axis
 // times projection of the desired earth vertical rotation rate onto that axis
-#define FEED_FORWARD                        1.0
+#define FEED_FORWARD                        0.8 // 1.0
 
 // TURN_RATE_NAV and TURN_RATE_FBW set the gains of the helical turn control for
 // waypoint navigation mode and fly by wire mode respectively.
 // They are specified in terms of the maximum desired turning rate in degrees per second in each mode.
 // The largest possible value is 240 degrees per second, anything larger will be clipped to 240.
 #define TURN_RATE_NAV                       30.0
-#define TURN_RATE_FBW                       60.0
+#define TURN_RATE_FBW                       45.0 // 60
 
 // Aileron/Roll Control Gains
 // ROLLKP is the proportional gain, approximately 0.25
@@ -508,7 +508,7 @@
 // use it only if there is no rudder.
 // YAWKD_AILERON is the derivative feedback gain for ailerons in response to yaw rotation.
 // use it only if there is no rudder.
-#define ROLLKP                              0.20
+#define ROLLKP                              0.15 // 0.20
 #define ROLLKD                              0.05
 #define YAWKP_AILERON                       0.00
 #define YAWKD_AILERON                       0.00
@@ -519,7 +519,7 @@
 // ELEVATOR_BOOST is the additional gain multiplier for the manually commanded elevator deflection
 #define PITCHGAIN                           0.20 // 0.30
 #define PITCHKD                             0.00
-#define ELEVATOR_BOOST                      0.50
+#define ELEVATOR_BOOST                      0.70 // 0.50
 
 // Parameters below are used in the computation of angle of attack and pitch trim.
 // ( INVERTED_NEUTRAL_PITCH is no longer used and should not be used.) -- Note (RobD) yes it is?

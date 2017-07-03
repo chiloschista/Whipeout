@@ -281,7 +281,7 @@ const struct logoInstructionDef instructions[] = {
 	HOME
 
 	REPEAT_FOREVER
-		DO_ARG(SQUARE, 100)
+		DO_ARG(SQUARE, 200)
 	END
 
 	TO (SQUARE)
