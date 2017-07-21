@@ -1,4 +1,4 @@
-// Whipeout, 28.06.17, 03.07.17
+// Whipeout, 28.06.17, 03.07.17, 21.07.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -72,7 +72,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Set this value to your GPS type.  (Set to GPS_STD, GPS_UBX_2HZ, GPS_UBX_4HZ, GPS_MTEK, GPS_NMEA, or GPS_NONE)
-#define GPS_TYPE                            GPS_STD
+#define GPS_TYPE                            GPS_UBX_4HZ
 //#define DEFAULT_GPS_BAUD                    57600   // added for GPS_NMEA support
 
 
@@ -85,7 +85,7 @@
 #define ROLL_STABILIZATION_RUDDER           0
 #define PITCH_STABILIZATION                 1
 #define YAW_STABILIZATION_RUDDER            0
-#define YAW_STABILIZATION_AILERON           1
+#define YAW_STABILIZATION_AILERON           0
 
 // Aileron and Rudder Navigation
 // Set either of these to 1 to enable helical turn control for navigation.
@@ -492,14 +492,14 @@
 // the feed forward gain for that axis.
 // For each axis, a deflection term is added equal to the feed forward gain for that axis
 // times projection of the desired earth vertical rotation rate onto that axis
-#define FEED_FORWARD                        0.8 // 1.0
+#define FEED_FORWARD                        0.7 // 0.8, 1.0
 
 // TURN_RATE_NAV and TURN_RATE_FBW set the gains of the helical turn control for
 // waypoint navigation mode and fly by wire mode respectively.
 // They are specified in terms of the maximum desired turning rate in degrees per second in each mode.
 // The largest possible value is 240 degrees per second, anything larger will be clipped to 240.
 #define TURN_RATE_NAV                       30.0
-#define TURN_RATE_FBW                       45.0 // 60
+#define TURN_RATE_FBW                       60.0 // 45.0 60.0
 
 // Aileron/Roll Control Gains
 // ROLLKP is the proportional gain, approximately 0.25
@@ -517,7 +517,7 @@
 // PITCHGAIN is the pitch stabilization gain, typically around 0.125
 // PITCHKD feedback gain for pitch damping, around 0.0625
 // ELEVATOR_BOOST is the additional gain multiplier for the manually commanded elevator deflection
-#define PITCHGAIN                           0.20 // 0.30
+#define PITCHGAIN                           0.15 // 0.20, 0.30
 #define PITCHKD                             0.00
 #define ELEVATOR_BOOST                      0.70 // 0.50
 
