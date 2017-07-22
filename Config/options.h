@@ -1,4 +1,4 @@
-// Whipeout, 28.06.17, 03.07.17, 21.07.17
+// Whipeout, 28.06.17, 03.07.17, 21.07.17, 22.07.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -492,14 +492,14 @@
 // the feed forward gain for that axis.
 // For each axis, a deflection term is added equal to the feed forward gain for that axis
 // times projection of the desired earth vertical rotation rate onto that axis
-#define FEED_FORWARD                        0.7 // 0.8, 1.0
+#define FEED_FORWARD                        0.6 // 0.7, 0.8, 1.0
 
 // TURN_RATE_NAV and TURN_RATE_FBW set the gains of the helical turn control for
 // waypoint navigation mode and fly by wire mode respectively.
 // They are specified in terms of the maximum desired turning rate in degrees per second in each mode.
 // The largest possible value is 240 degrees per second, anything larger will be clipped to 240.
 #define TURN_RATE_NAV                       30.0
-#define TURN_RATE_FBW                       60.0 // 45.0 60.0
+#define TURN_RATE_FBW                       60.0 // 45.0, 60.0
 
 // Aileron/Roll Control Gains
 // ROLLKP is the proportional gain, approximately 0.25
