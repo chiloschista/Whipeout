@@ -600,7 +600,6 @@ static void msg_PL1(uint8_t gpschar)
 					{
 						msg_parse = &msg_B3;    // error condition
 					}
-					
 					break;
 				}
 #if (HILSIM == 1)
