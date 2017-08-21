@@ -1,4 +1,4 @@
-// Whipeout, 28.06.17, 03.07.17, 21.07.17, 22.07.17
+// Whipeout, 28.06.17, 03.07.17, 21.07.17, 22.07.17, 10.08.17 UDB5Mini_2 swap,
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -72,7 +72,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Set this value to your GPS type.  (Set to GPS_STD, GPS_UBX_2HZ, GPS_UBX_4HZ, GPS_MTEK, GPS_NMEA, or GPS_NONE)
-#define GPS_TYPE                            GPS_STD
+#define GPS_TYPE                            GPS_UBX_4HZ
 //#define DEFAULT_GPS_BAUD                    57600   // added for GPS_NMEA support
 
 
@@ -547,12 +547,12 @@
 // Uncomment the line below to activate the CUSTOM_OFFSETS feature in MatrixPilot.
 
 #define CUSTOM_OFFSETS
-#define XACCEL_OFFSET (  462 ) 
-#define YACCEL_OFFSET ( -130 )
-#define ZACCEL_OFFSET ( -971 )
-#define XRATE_OFFSET  ( -195 ) // not used by the UDB4
-#define YRATE_OFFSET  (  -79 ) // not used by the UDB4
-#define ZRATE_OFFSET  (  -44 ) // not used by the UDB4
+#define XACCEL_OFFSET (  343 ) 
+#define YACCEL_OFFSET (   40 )
+#define ZACCEL_OFFSET ( -728 )
+#define XRATE_OFFSET  ( -164 ) // not used by the UDB4
+#define YRATE_OFFSET  (   71 ) // not used by the UDB4
+#define ZRATE_OFFSET  ( -128 ) // not used by the UDB4
 
 // Rudder/Yaw Control Gains
 // YAWKP_RUDDER is the proportional feedback gain for rudder control of yaw orientation.

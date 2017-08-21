@@ -1,0 +1,9 @@
+diff a/libDCM/gpsParseUBX.c b/libDCM/gpsParseUBX.c	(rejected hunks)
+@@ -600,7 +600,6 @@
+ 					{
+ 						msg_parse = &msg_B3;    // error condition
+ 					}
+-					
+ 					break;
+ 				}
+ #if (HILSIM == 1)

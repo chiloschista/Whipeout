@@ -77,12 +77,6 @@
       <logicalFolder name="RollPitchYaw/Config"
                      displayName="RollPitchYaw/Config"
                      projectFiles="true">
-        <itemPath>../../RollPitchYaw/Config/options.h</itemPath>
-        <itemPath>../../RollPitchYaw/Config/options_auav3.h</itemPath>
-        <itemPath>../../RollPitchYaw/Config/options_magnetometer.h</itemPath>
-        <itemPath>../../RollPitchYaw/Config/options_nv_memory.h</itemPath>
-        <itemPath>../../RollPitchYaw/Config/options_osd.h</itemPath>
-        <itemPath>../../RollPitchYaw/Config/options_ports.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -197,7 +191,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.26</languageToolchainVersion>
+        <languageToolchainVersion>1.31</languageToolchainVersion>
         <platform>4</platform>
       </toolsSet>
       <compileType>
@@ -212,6 +206,8 @@
           <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
+        <subordinates>
+        </subordinates>
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
