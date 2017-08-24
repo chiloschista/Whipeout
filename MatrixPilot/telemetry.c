@@ -689,7 +689,7 @@ void telemetry_output_8hz(void)
 #if (MAG_YAW_DRIFT == 1)
 				    magFieldEarth[0], magFieldEarth[1], magFieldEarth[2],
 #else
-				    (int16_t)0, (int16_t)0, (int16_t)0,
+				    (uint16_t)0, (uint16_t)0, (uint16_t)0,
 #endif // MAG_YAW_DRIFT
 				    svs, hdop);
 
@@ -739,6 +739,7 @@ void telemetry_output_8hz(void)
 					serial_output("stk%d:", (int16_t)(4096-maxstack));
 #endif // RECORD_FREE_STACK_SPACE
 					serial_output("\r\n");
+					serial_output("F23:G%i:\r\n",gps_parse_errors);
 				}
 			}
 			if (state_flags._.f13_print_req == 1)
