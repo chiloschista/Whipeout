@@ -39,10 +39,10 @@
 #include "../libUDB/osd.h"
 #include "options_magnetometer.h"
 #include "options_osd.h"
-#if (SILSIM != 1)
+//#if (SILSIM != 1) // this caused a build failure when SILSIM and SERIAL_UDB_EXTRA are both defined
 #include "../libUDB/libUDB.h" // Needed for access to RCON
 #include "../libUDB/ADchannel.h"
-#endif
+//#endif
 #include "../libUDB/mcu.h"
 //#include "../libDCM/libDCM_internal.h" // Needed for access to internal DCM values
 #include "../libDCM/libDCM.h" // Needed for access to internal DCM value
@@ -454,12 +454,6 @@ static void serial_output(const char* format, ...)
 		end_index = start_index + wrote;
 		udb_serial_start_sending_data();
 	}
-
-	if (sb_index == 0)
-	{
-		udb_serial_start_sending_data();
-	}
-
 	va_end(arglist);
 }
 #endif // USE_TELELOG
