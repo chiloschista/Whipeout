@@ -136,7 +136,7 @@
 // in the altitude controls, and will trim the throttle and pitch to maintain air speed.
 // Define DESIRED_SPEED to be the air speed that you want, in meters/second.
 #define SPEED_CONTROL                       0
-#define DESIRED_SPEED                       10.0    // meters/second
+#define DESIRED_SPEED                       13.8    // meters/second
 
 // Inverted flight
 // Set these to 1 to enable stabilization of inverted flight in stabilized and/or waypoint modes.
@@ -513,7 +513,7 @@
 // waypoint navigation mode and fly by wire mode respectively.
 // They are specified in terms of the maximum desired turning rate in degrees per second in each mode.
 // The largest possible value is 240 degrees per second, anything larger will be clipped to 240.
-#define TURN_RATE_NAV                       30.0
+#define TURN_RATE_NAV                       60.0 // 30.0
 #define TURN_RATE_FBW                       60.0 // 45.0, 60.0
 
 // Aileron/Roll Control Gains
@@ -547,7 +547,7 @@
 // ELEVATOR_TRIM_INVERTED               Elevator trim in fractional servo units (-1.0 to 1.0 ) for inverted straight and level flight at cruise speed.
 // Note: ELEVATOR_TRIM_INVERTED is usually negative, with typical values in the -0.5 to -1.0 range.
 
-#define REFERENCE_SPEED                 (  12.0 )
+#define REFERENCE_SPEED                 (  13.8 )
 #define ANGLE_OF_ATTACK_NORMAL          (   0.0 )
 #define ANGLE_OF_ATTACK_INVERTED        (   0.0 )
 #define ELEVATOR_TRIM_NORMAL            (   0.0 )
@@ -706,8 +706,8 @@
 // Use ALT_HOLD_PITCH_HIGH when above HEIGHT_MARGIN of the target height.
 // Pitch values are in degrees.  Negative values pitch the plane down.
 #define ALT_HOLD_PITCH_MIN                 -15.0
-#define ALT_HOLD_PITCH_MAX                  15.0
-#define ALT_HOLD_PITCH_HIGH                -15.0
+#define ALT_HOLD_PITCH_MAX                  25.0 // 15.0
+#define ALT_HOLD_PITCH_HIGH                -25.0 // 15.0
 
 
 ////////////////////////////////////////////////////////////////////////////////
