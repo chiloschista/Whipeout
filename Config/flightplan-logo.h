@@ -315,12 +315,10 @@ TO (RIGHT_TURN)
 TO (LEFT_TURN)
 	//FLAG_ON(F_CROSS_TRACK)
     LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
-    PARAM_MUL(-1)
-    PARAM_DIV(10)
+    PARAM_DIV(-10)
         REPEAT_PARAM
         LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
-        PARAM_MUL(-1)
-        PARAM_DIV(7)
+        PARAM_DIV(-7)
         LT_PARAM
         FD(10)
         END
@@ -342,7 +340,7 @@ TO (LOITER)
 		USE_CURRENT_ANGLE
 		//REPEAT(18)
         REPEAT_FOREVER
-		LT(10)
+		RT(10)
 		FD(5)
 		END
 
@@ -351,7 +349,7 @@ TO (LOITER)
         IF_LE(CURRENT_ANGLE,180)
             PEN_UP
                 HOME
-                SOUTH(20)
+                NORTH(20)
                 WEST(20)
             PEN_DOWN
             FLAG_ON(F_LAND)
@@ -374,7 +372,7 @@ TO (LOITER)
                 USE_CURRENT_ANGLE
                 //REPEAT(18)
                 REPEAT_FOREVER
-                LT(10)
+                RT(10)
                 FD(5)
                 END
 
@@ -390,7 +388,7 @@ TO (LOITER)
                     USE_CURRENT_ANGLE
                     //REPEAT(18)
                     REPEAT_FOREVER
-                    RT(10)
+                    LT(10)
                     FD(5)
                     END
                 END
