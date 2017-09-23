@@ -1,4 +1,4 @@
-// Whipeout 28.06.17, 10.09.17
+// Whipeout 28.06.17, 10.09.17, 23.09.17
 // This file is part of MatrixPilot.
 //
 //    http://code.google.com/p/gentlenav/
@@ -265,10 +265,9 @@
 //		END
 //	};
 
-////////////////////////////////////////////////////////////////////////////////
-// Main Flight Plan
-// Force turn toward home and aim to best loiter direction (North-South valleys)
-//
+/*
+//////////////////////////////////////////////////////////////////////////////////
+// Main flight plan, RTL and loiter
 #define RIGHT_TURN 1
 #define LEFT_TURN  2
 #define LOITER     3
@@ -276,6 +275,7 @@
 
 const struct logoInstructionDef instructions[] = {
 
+    
 	SET_SPEED(14)
     LOAD_TO_PARAM(ALT) // Check altitude to be more than 100m, if not climb)
     SET_ALT_PARAM
@@ -285,7 +285,7 @@ const struct logoInstructionDef instructions[] = {
         //LOAD_TO_PARAM(ALT)
         SET_ALT_PARAM
     END
-           
+    USE_CURRENT_ANGLE
         IF_LE(REL_ANGLE_TO_HOME,0)
         DO(LEFT_TURN)
         ELSE
@@ -294,12 +294,13 @@ const struct logoInstructionDef instructions[] = {
 	//FLAG_OFF(F_CROSS_TRACK)
 	
         DO(LOITER)
+END
 	
 
 ////////////
 
 TO (RIGHT_TURN)
-	//FLAG_ON(F_CROSS_TRACK)
+	USE_CURRENT_ANGLE
     LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
     PARAM_DIV(10)
         REPEAT_PARAM
@@ -313,7 +314,7 @@ TO (RIGHT_TURN)
 	
 
 TO (LEFT_TURN)
-	//FLAG_ON(F_CROSS_TRACK)
+	USE_CURRENT_ANGLE
     LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
     PARAM_DIV(-10)
         REPEAT_PARAM
@@ -397,8 +398,276 @@ TO (LOITER)
     END
 END
 } ;
-// End Main Flight Plan
+// End Main
+///////////////////////////////////////////////////////////////////////////////
+ */ 
+/*
+//////////////////////////////////////////////////////////////////////////////////
+// Main flight plan, RTL and loiter
+#define RIGHT_TURN 1
+#define LEFT_TURN  2
+//#define LOITER     3
 
+
+const struct logoInstructionDef instructions[] = {
+
+    //USE_CURRENT_POS
+	SET_SPEED(14)
+    LOAD_TO_PARAM(ALT) // Check altitude to be more than 100m, if not climb)
+    SET_ALT_PARAM
+    IF_LE(ALT,100)
+    SET_ALT(100)
+    ELSE
+        //LOAD_TO_PARAM(ALT)
+        SET_ALT_PARAM
+    END
+ 
+    //USE_CURRENT_ANGLE
+        IF_LE(REL_ANGLE_TO_HOME,0)
+        DO(LEFT_TURN)
+        ELSE
+        DO(RIGHT_TURN)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+        DO(LOITER)
+END
+	
+
+////////////
+
+TO (RIGHT_TURN)
+	USE_CURRENT_ANGLE
+    LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
+    PARAM_DIV(10)
+        REPEAT_PARAM
+        RT(10)
+        FD(10)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+    END
+	
+
+TO (LEFT_TURN)
+	USE_CURRENT_ANGLE
+    LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
+    PARAM_DIV(-10)
+        REPEAT_PARAM
+        LT(10)
+        FD(10)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+    END
+	
+
+TO (LOITER)
+	//FLAG_ON(F_CROSS_TRACK)
+	//FLAG_ON(F_LAND)
+	
+	IF_LE(CURRENT_ANGLE,90)
+		PEN_UP
+            HOME
+            SOUTH(20)
+            EAST(20)
+		PEN_DOWN
+        FLAG_ON(F_LAND)
+		USE_CURRENT_ANGLE
+		//REPEAT(18)
+        REPEAT_FOREVER
+		RT(10)
+		FD(5)
+		END
+
+	ELSE
+
+        IF_LE(CURRENT_ANGLE,180)
+            PEN_UP
+                HOME
+                NORTH(20)
+                WEST(20)
+            PEN_DOWN
+            FLAG_ON(F_LAND)
+            USE_CURRENT_ANGLE
+            //REPEAT(18)
+            REPEAT_FOREVER
+            LT(10)
+            FD(5)
+            END
+
+        ELSE
+
+            IF_LE(CURRENT_ANGLE,270)
+                PEN_UP
+                    HOME
+                    NORTH(20)
+                    WEST(20)
+                PEN_DOWN
+                FLAG_ON(F_LAND)
+                USE_CURRENT_ANGLE
+                //REPEAT(18)
+                REPEAT_FOREVER
+                RT(10)
+                FD(5)
+                END
+
+            ELSE
+
+                IF_LE(CURRENT_ANGLE,360)
+                    PEN_UP
+                        HOME
+                        SOUTH(20)
+                        WEST(20)
+                    PEN_DOWN
+                    FLAG_ON(F_LAND)
+                    USE_CURRENT_ANGLE
+                    //REPEAT(18)
+                    REPEAT_FOREVER
+                    LT(10)
+                    FD(5)
+                    END
+                END
+            END
+        END
+    END
+END
+
+} ;
+// End Main
+///////////////////////////////////////////////////////////////////////////////
+*/
+
+//////////////////////////////////////////////////////////////////////////////////
+// Main flight plan, RTL and loiter
+#define RIGHT_TURN 1
+#define LEFT_TURN  2
+#define LOITER     3
+ 
+
+const struct logoInstructionDef instructions[] = {
+
+    //USE_CURRENT_POS
+	SET_SPEED(14)
+    LOAD_TO_PARAM(ALT) // Check altitude to be more than 100m, if not climb)
+    SET_ALT_PARAM
+    IF_LE(ALT,100)
+    SET_ALT(100)
+    ELSE
+        //LOAD_TO_PARAM(ALT)
+        SET_ALT_PARAM
+    END
+    USE_CURRENT_ANGLE
+        IF_LE(REL_ANGLE_TO_HOME,0)
+        DO(LEFT_TURN)
+        ELSE
+        DO(RIGHT_TURN)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+	
+        DO(LOITER)
+END
+	
+
+////////////
+
+TO (RIGHT_TURN)
+	USE_CURRENT_ANGLE
+   // FLAG_ON(F_CROSS_TRACK)
+    LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
+    PARAM_DIV(10)
+        REPEAT_PARAM
+        RT(10)
+        FD(10)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+    END
+	
+
+TO (LEFT_TURN)
+	USE_CURRENT_ANGLE
+    //FLAG_ON(F_CROSS_TRACK)
+    LOAD_TO_PARAM(REL_ANGLE_TO_HOME)
+    PARAM_DIV(-10)
+        REPEAT_PARAM    
+        LT(10)
+        FD(10)
+        END
+	//FLAG_OFF(F_CROSS_TRACK)
+    END
+	
+
+TO (LOITER)
+	//FLAG_ON(F_CROSS_TRACK)
+	//FLAG_ON(F_LAND)
+	
+	IF_LE(CURRENT_ANGLE,90)
+		PEN_UP
+            HOME
+            NORTH(20)
+            WEST(20)
+		PEN_DOWN
+        FLAG_ON(F_LAND)
+		USE_CURRENT_ANGLE
+		//REPEAT(18)
+        REPEAT_FOREVER
+		RT(10)
+		FD(5)
+		END
+
+	ELSE
+	IF_LE(CURRENT_ANGLE,180)
+            PEN_UP
+                HOME
+                SOUTH(20)
+                WEST(20)
+            PEN_DOWN
+            FLAG_ON(F_LAND)
+            USE_CURRENT_ANGLE
+            //REPEAT(18)
+            REPEAT_FOREVER
+            LT(10)
+            FD(5)
+            END
+
+        ELSE
+
+            IF_LE(CURRENT_ANGLE,270)
+	   
+                PEN_UP
+                    HOME
+                    NORTH(20)
+                    WEST(20)
+                PEN_DOWN
+                FLAG_ON(F_LAND)
+                USE_CURRENT_ANGLE
+                //REPEAT(18)
+                REPEAT_FOREVER
+                LT(10)
+                FD(5)
+                END
+
+            ELSE
+
+                IF_LE(CURRENT_ANGLE,360)
+		
+                    PEN_UP
+                        HOME
+                        SOUTH(20)
+                        WEST(20)
+                    PEN_DOWN
+                    FLAG_ON(F_LAND)
+                    USE_CURRENT_ANGLE
+                    //REPEAT(18)
+                    REPEAT_FOREVER
+                    RT(10)
+                    FD(5)
+                    END
+                END
+            END
+        END
+    END
+END
+} ;
+// End main flight plan
+//////////////////////////////////////////////////////////////////////////
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -416,7 +685,7 @@ const struct logoInstructionDef instructions[] = {
 	HOME
 
 	REPEAT_FOREVER
-		DO_ARG(SQUARE, 200)
+		DO_ARG(SQUARE, 100)
 	END
 
 	TO (SQUARE)
@@ -437,12 +706,12 @@ const struct logoInstructionDef rtlInstructions[] = {
 	// Use cross-tracking for navigation
 	FLAG_ON(F_CROSS_TRACK)
 
-    // Fly home
-	HOME
-            
 	// Turn off engine for RTL
 	// Move this line down below the HOME to return home with power before circling unpowered.
 	FLAG_ON(F_LAND)
+
+	// Fly home
+	HOME
 
 	// Once we arrive home, aim the turtle in the
 	// direction that the plane is already moving.
